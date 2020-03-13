@@ -2,16 +2,16 @@ var articleNum = 0;
 
 var likeBtn = document.getElementById("main__like");
 var dislikeBtn = document.getElementById("main__dislike");
-var likeFilledUrl = "https://cdn.glitch.com/a7f316a6-8898-4031-a62e-0fbd285b3696%2Flike-filled.png";
-var likeEmptyUrl = "https://cdn.glitch.com/a7f316a6-8898-4031-a62e-0fbd285b3696%2Flike-empty.png";
-var dislikeFilledUrl = "https://cdn.glitch.com/a7f316a6-8898-4031-a62e-0fbd285b3696%2Fdislike-filled.png";
-var dislikeEmptyUrl = "https://cdn.glitch.com/a7f316a6-8898-4031-a62e-0fbd285b3696%2Fdislike-empty.png";
+var likeFilledUrl = "https://cdn.glitch.com/006951d0-00e5-46ee-8e12-50194cef8cd0%2Flike-filled.png";
+var likeEmptyUrl = "https://cdn.glitch.com/006951d0-00e5-46ee-8e12-50194cef8cd0%2Flike-empty.png";
+var dislikeFilledUrl = "https://cdn.glitch.com/006951d0-00e5-46ee-8e12-50194cef8cd0%2Fdislike-filled.png";
+var dislikeEmptyUrl = "https://cdn.glitch.com/006951d0-00e5-46ee-8e12-50194cef8cd0%2Fdislike-empty.png";
 var xhttp = new XMLHttpRequest();
 var articleRankings = [0,0,0,0,0];
 var articles = [];
+
 likeBtn.addEventListener('click', like);
 dislikeBtn.addEventListener('click', dislike);
-
 start();
 
 function start() {
@@ -26,6 +26,7 @@ function start() {
 
 }
 
+//Fetch all the articles json
 async function fetchArticles(){
 
     for(var i = 0; i < 5;i++){
@@ -47,6 +48,7 @@ async function fetchArticles(){
 
 }
 
+//Load the previous article
 function previousArticle(){
 
     if(articleNum > 0){
@@ -60,6 +62,7 @@ function previousArticle(){
     
 }
 
+//Load the next article
 function nextArticle(){
 
     if(articleNum < 4){
@@ -73,6 +76,7 @@ function nextArticle(){
 
 }
 
+//Like an article
 async function like() {
 
     console.log("Like button clicked");
@@ -84,6 +88,7 @@ async function like() {
 
 };
 
+//Dislike an article
 async function dislike() {
 
     console.log("Disike button clicked");
@@ -95,6 +100,7 @@ async function dislike() {
     
 };
 
+//Update the buttons onclick and background image
 function changeBtns(){
 
     console.log("Rating for this page is " + articleRankings[articleNum]);
@@ -127,6 +133,7 @@ function changeBtns(){
 
 }
 
+//Convert the article from json to actual HTML elements
 function addArticleToPage (json) {
     console.log(articleNum);
 
