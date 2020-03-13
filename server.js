@@ -2,12 +2,15 @@
 var express = require('express');
 const fetch = require("node-fetch");
 var async = require('express-async-await');
+var bodyParser = require("body-parser");
 var fs = require('fs');
 var request = require('request');
 var app = express();
 var path = require('path');
 
 app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
@@ -40,6 +43,13 @@ app.get('/api/article', async function (req, res) {
 
     //
 });
+
+app.post('/api/rank',function(req,res){
+    var ranking = req.body.ranking;
+  
+    console.log(ranking);
+    res.send("Recieved");
+  });
 
 // listen for requests :)
 var listener = app.listen((process.env.PORT || 3000), function () {
